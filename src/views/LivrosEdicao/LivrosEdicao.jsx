@@ -12,7 +12,8 @@ const LivrosEdicao = () => {
 
   async function getLivro(){
     const {data} = await LivrosService.getLivro(livroId);
-    setLivro(data)
+
+    setLivro(data.resposta)
   }
 
   async function editLivro(){
@@ -53,23 +54,24 @@ const LivrosEdicao = () => {
             </div>
             <div className='form-group'>
               <label>Titulo</label>
-              <input type="text" required onChange={(event)=>{ setLivro({...livro, titulo: event.target.value})}} value={livro.titulo || ''} ></input>
+              <input type="text"  onChange={(event)=>{ setLivro({...livro, titulo: event.target.value})}} value={livro.titulo || ''} ></input>
             </div>
             <div className='form-group'>
               <label>Número de Páginas</label>
-              <input type="text"  required onChange={(event)=>{ setLivro({...livro, num_paginas: event.target.value})}} value={livro.num_paginas || ''}></input>
+              <input type="text"   onChange={(event)=>{ setLivro({...livro, num_paginas: event.target.value})}} value={livro.num_paginas || ''}></input>
             </div>
             <div className='form-group'>
               <label>ISBN</label>
-              <input type="text"  required onChange={(event)=>{ setLivro({...livro, isbn: event.target.value})}} value={livro.isbn || ''}></input>
+              <input type="text"   onChange={(event)=>{ setLivro({...livro, isbn: event.target.value})}} value={livro.isbn || ''}></input>
             </div>
             <div className='form-group'>
               <label>Editora</label>
-              <input type="text"  required onChange={(event)=>{ setLivro({...livro, editora: event.target.value})}} value={livro.editora || ''}></input>
+              <input type="text"   onChange={(event)=>{ setLivro({...livro, editora: event.target.value})}} value={livro.editora || ''}></input>
             </div> 
             <div className='form-group'>
               <button onClick={()=>{
               editLivro()
+              console.log(livro)
             }}>Atualizar Livro</button>  
             </div>                   
           </form>

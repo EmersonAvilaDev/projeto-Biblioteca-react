@@ -11,19 +11,19 @@ const Livros = () => {
 
   async function getLivros(){
     const {data} = await LivrosService.getLivros();
-    setLivros(data)
+    setLivros(data.resposta)
   }
 
-  async function deleteLivro(livroId){
-    let valida = confirm(`Você realmente deseja remover o livro de ID: ${livroId}`);
+  async function deleteLivro(id){
+    let valida = confirm(`Você realmente deseja remover o livro de ID: ${id}`);
     if(valida){
-      await LivrosService.deleteLivro(livroId)
+      await LivrosService.deleteLivro(id)
       .then(({data}) => {
-        alert(data.mensagem)
+        alert(data.statusMensagem)
         getLivros()
       })
       .catch(({response:{data,status}})=>{
-        alert(`${status} - ${data.mensagem}`)      
+        alert(`${status} - ${data.statusMensagem}`)      
       });
     }
   }
