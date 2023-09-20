@@ -20,7 +20,7 @@ const LivrosCadastro = () => {
       await LivrosService.createLivro(body)
       .then((response)=>{
         alert(response.statusMensagem)
-        document.getElementById('formulario').reset
+        document.getElementById('formulario').reset();
       })
       .catch(({response:{data,status}})=>{
         alert(`${status} - ${data}`)      
